@@ -21,10 +21,13 @@ public class MemberService {
 
     public Long join(Member member){
 
-        validateDuplicateMember(member); //중복 회원 검증
 
-        memberRepository.save(member);
-        return member.getId();
+            validateDuplicateMember(member); //중복 회원 검증
+
+            memberRepository.save(member);
+            return member.getId();
+
+
     }
 
     private void validateDuplicateMember(Member member) {

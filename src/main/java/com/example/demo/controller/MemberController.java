@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -42,4 +43,29 @@ public class MemberController {
         model.addAttribute("members",members);
         return "members/memberList";
     }
+
+
+    @GetMapping("/members/update")
+    public String updateForm(Model model){
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members",members);
+        return "members/updateMemberForm";
+    }
+
+    @GetMapping("/members/delete")
+    public String deleteForm(Model model){
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members",members);
+        return "members/deleteMemberForm";
+    }
+
+
+    @PostMapping("/members/delete/{id}")
+    public String delete(@PathVariable Long id){
+
+
+
+        return "redirect:/";
+    }
+
 }
